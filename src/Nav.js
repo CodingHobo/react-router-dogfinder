@@ -3,9 +3,16 @@ import "./Nav.css";
 import { NavLink } from "react-router-dom";
 
 function Nav({dogs}) {
-  const dog = dogs.map(dog => (
-    <NavLink to={`/dogs/${dog.name}`}>{dog.name}</NavLink>
-    ))
+
+    if (!dogs){
+      return (
+       <div>no dogs</div>
+      )
+    }
+    const dog = dogs.map(dog =>
+      (<NavLink to={`/dogs/${dog.name}`} key={dog.name}>{dog.name}</NavLink>)
+      )
+ 
 
   return (
     <nav className="Nav">

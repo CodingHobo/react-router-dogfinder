@@ -7,16 +7,26 @@ import Nav from "./Nav";
 import RoutesList from "./RoutesList";
 
 function App() {
-  const [dogs, setDogs] = useState({});
+  const [dogs, setDogs] = useState(null);
+  const [isLoading, setIsLoading] = useState(true)
 
   async function getDogs() {
     const resp = await axios.get("http://localhost:5001/dogs");
-    console.log(resp.data);
+    setDogs(resp.data);
+    setIsLoading(false);
   }
-  getDogs();
+  if (isLoading){
+    getDogs();
+  }
+
+
   return (
-    <p>This is a paragraph</p>
-    // <Nav dogs={dogs}/>
+    <div>
+      <BrowserRouter>
+    <Nav dogs={dogs}/>
+    <RoutesList dogs={dogs} />
+    </BrowserRouter>
+    </div>
   );
 }
 
