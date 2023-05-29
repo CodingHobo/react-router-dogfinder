@@ -17,6 +17,7 @@ function App() {
   }
   if (isLoading){
     getDogs();
+    return <div>Loading...</div>
   }
 
 

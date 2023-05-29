@@ -4,12 +4,6 @@ import {Link} from "react-router-dom"
 
 function DogList({dogs}){
 
-  if (!dogs){
-    return (
-     <div>no dogs</div>
-    )
-  }
-
 return (
   <div className="row">
   {dogs.map(d => (
